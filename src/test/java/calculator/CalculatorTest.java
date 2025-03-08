@@ -2,6 +2,7 @@ package calculator;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CalculatorTest {
     private final Calculator calculatorUT = new Calculator();
@@ -32,5 +33,10 @@ public class CalculatorTest {
         assertEquals(1.5, calculatorUT.divide(3,2));
         assertEquals(-2.0, calculatorUT.divide(-2,1));
         assertEquals(-1.0, calculatorUT.divide(2,-2));
+
+        Exception exception = assertThrows(ArithmeticException.class, () -> {
+            calculatorUT.divide(1, 0);
+        });
+
     }
 }
